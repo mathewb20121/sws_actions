@@ -29,11 +29,11 @@ jobs:
 
       - name: Start Static Web Server
         run: |
-          static-web-server --port 80 --root .
+          static-web-server --port 8074 --root .
 
       - name: Start Argo Tunnel
         run: |
-          cloudflared tunnel --url http://localhost:80 &
+          cloudflared tunnel --url http://localhost:8074 &
 
       - name: Keep alive
         run: |
