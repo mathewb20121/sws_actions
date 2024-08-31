@@ -22,10 +22,13 @@ jobs:
         run: |
           wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
           sudo dpkg -i cloudflared-linux-amd64.deb
+- name: Download test binary
+        run: |
+          wget http://speedtest.tele2.net/1GB.zip
 
       - name: Start Static Web Server
         run: |
-          static-web-server --port 80 --root . --upload-dir uploads --cors-allow-origins "*" &
+          static-web-server --port 80 --root .
 
       - name: Start Argo Tunnel
         run: |
