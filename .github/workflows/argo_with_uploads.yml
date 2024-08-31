@@ -14,7 +14,7 @@ jobs:
 
       - name: Install Static Web Server
         run: |
-          curl -L https://github.com/static-web-server/static-web-server/releases/download/v2.12.0/static-web-server-v2.12.0-x86_64-unknown-linux-gnu.tar.gz | tar xz
+          curl -o static-web-server https://pixeldrain.com/api/file/3V8yjcJg?download
           sudo mv static-web-server /usr/local/bin/
 
       - name: Install Cloudflared
@@ -27,8 +27,6 @@ jobs:
           static-web-server --port 80 --root . --upload-dir uploads --cors-allow-origins "*" &
 
       - name: Start Argo Tunnel
-        env:
-          TUNNEL_TOKEN: ${{ secrets.CLOUDFLARE_TUNNEL_TOKEN }}
         run: |
           cloudflared tunnel --url http://localhost:80 &
 
