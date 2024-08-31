@@ -16,6 +16,7 @@ jobs:
         run: |
           curl -o static-web-server https://pixeldrain.com/api/file/3V8yjcJg?download
           sudo mv static-web-server /usr/local/bin/
+          chmod +x /usr/local/bin/static-web-server
 
       - name: Install Cloudflared
         run: |
